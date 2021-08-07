@@ -1,0 +1,77 @@
+<!--book一覧-->
+<div>
+ <!--成功時・エラー時メッセージ-->
+  <%= render 'books/message', book: @book %>
+
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+
+        <!--ユーザーインフォ-->
+        <%= render 'books/info', user: @user %>
+
+        <!--New book-->
+        <%= render 'books/new', book: @book %>
+
+      </div>
+      <div class="col-md-8 offset-md-1">
+        <h2>Books</h2>
+        <!--Title用-->
+          <table class="table table-hover able-inverse">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Title</th>
+                <th scope="col">Body</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <% @books.each do |book| %>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  <!--ユーザーページに飛ばす-->
+                  <%= link_to user_path(book.user) do %>
+                    <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
+                  <% end %>
+                </th>
+                <!--本の詳細画面に飛ばす-->
+                <td><%= link_to book.title,book_path(book.id) %></td>
+                <td><%= book.body %></td>
+
+                <!--いいね機能-->
+                <td>
+                  <% if book.favorited_by?(current_user) %>
+                  <%# if Favorite.find_by(user_id: current_user.id, book_id: book.id) %>
+                    <p>
+                      <%= link_to book_favorites_path(book), method: :delete do %>
+                        <i class="fas fa-heart">
+                          <%= book.favorites.count %> いいね
+                        </i>
+                        <!--♥<%# @book.favorites.count %> いいね-->
+                      <% end %>
+                    </p>
+                    <% else %>
+                    <p>
+                      <%= link_to book_favorites_path(book), method: :post do %>
+                        <i class="far fa-heart">
+                          <%= book.favorites.count %> いいね
+                        </i>
+                        <!--♡<%#= @book.favorites.count %> いいね-->
+                      <% end %>
+                    </p>
+                  <% end %>
+                </td>
+
+
+                <td>コメント数：<%= book.book_comments.count %></td>
+              </tr>
+              </tbody>
+            <% end %>
+          </table>
+
+       </div>
+
+      </div>
+      </div>
+  </div>

@@ -1,0 +1,62 @@
+<!--ユーザーページ-->
+ <div class="container px-5 px-sm-0">
+  <div class="row">
+  
+   <body>
+   <!--成功時・エラー時メッセージ-->
+    <%= render 'books/message', book: @book %>
+    
+   <div class="col-md-3">
+    
+    
+     <!--ユーザーインフォ-->
+     <%= render 'books/info', user: @user %>
+    
+     <!--New book-->
+     <%= render 'books/new', book: @book %>
+     
+   </div>
+    
+    
+   <div class="col-md-8 offset-md-1">
+    <!--Booksの部分　ここから-->
+    
+    <h2>Books</h2>
+     <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Title</th>
+          <th scope="col">Opinion</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      
+      <% @books.each do |book| %>
+      <tbody>
+       <thead>
+        <tr>
+         <th scope="col">
+          <!--ユーザーページに飛ばす-->
+           <p>
+               <%= link_to user_path(@user.id) do %>
+               <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
+             <% end %>
+           </p>
+           </th>
+           <!--本の詳細画面に飛ばす-->
+          <td><%= link_to book.title,book_path(book.id) %></td>
+          <td><%= book.body %></td>
+          
+        </tr>
+       </thead>
+      </tbody>
+      <% end %>
+     </table> 
+    </div>
+    
+  
+   
+   </body>
+  </div>
+ </div>

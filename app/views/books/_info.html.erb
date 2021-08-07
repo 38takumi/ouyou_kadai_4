@@ -1,0 +1,28 @@
+<!--ユーザーインフォを入れる　ここから-->
+<p>
+  <h2>User info</h2>
+    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
+</p>
+   <table class="table">
+    <tbody>
+     <tr>
+       <th>Name</th>
+       <th><%= user.name %></th>
+     </tr>
+     <tr>
+       <th>Introduction</th>
+       <th><%= user.introduction %></th>
+     </tr>
+    </tbody>
+   </table>
+ <!--ユーザーインフォを入れる　ここまで-->
+ 
+ <!--編集用ボタン-->
+   <div class="row">
+   <%# if user.id == current_user.id %>
+    <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
+     <i class="fas fa-user-cog"></i>
+    <%# end %>
+  
+    <% end %>
+   </div>
