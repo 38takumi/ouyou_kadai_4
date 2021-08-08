@@ -28,7 +28,6 @@ class BooksController < ApplicationController
      # １. データを新規登録するためのインスタンス作成
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    # binding.pry
      # ２. データをデータベースに保存するためのsaveメソッド実行
     if @book.save
       flash[:notice] = "Book was successfully created."
