@@ -4,15 +4,17 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @user = current_user
-    # @user_data = current_user
+    # follow,follower数用　いらないかも
+    # @users = @user.followings
     @book = Book.new
-    # @book_favorite = Book.find(params[:id])
   end
 
   def show
      @book = Book.find(params[:id])
-    # @bookのユーザー
+     # @bookのユーザー
      @user = @book.user
+     # follow,follower数用　いらないかも
+    # @users = User.find(params[:id])
      @book_new = Book.new
      @book_comment = BookComment.new
   end

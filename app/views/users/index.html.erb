@@ -5,7 +5,7 @@
  
  <div class="col-md-3"> 
     <!--ユーザーインフォ-->
-    <%= render 'books/info', user: @user %>
+    <%= render 'books/info', user: @user, users: @users_relationships  %>
     <!--New book-->
     <%= render 'books/new', book: @book %>
  </div>  

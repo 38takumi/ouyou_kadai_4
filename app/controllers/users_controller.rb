@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :correct_user,only: [:edit,:update]
-  
+
   def index
-    @users = User.all
+    @users = User.all 
     @user = current_user
+    # follow,follower数用　いらないかも
+    # @users_relationships = @user.followings
     @books = Book.all
     @book = Book.new
   end
@@ -12,12 +14,14 @@ class UsersController < ApplicationController
      @user = User.find(params[:id])
      @book = Book.new
      @books = @user.books
+     # follow,follower数用　いらないかも
+    # @users = @user
   end
 
   # def new
   #   @book = Book.new
   # end
-  
+
   # def create
   #   @user = User.new(user_params)
   #   if @user.save
@@ -34,7 +38,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     @user = current_user
@@ -48,26 +52,26 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   # def destroy
   #   user = User.find(params[:id])
   #   user.destroy
   #   flash[:notice] = "Book was successfully destroyed."
   #   redirect_to users_path
   # end
-  
-  
-   
-  
+
+
+
+
   def correct_user
         @user = User.find(params[:id])
     unless @user.id == current_user.id
       redirect_to user_path(current_user)
     end
   end
-  
-  
-  
+
+
+
   private
   def user_params
     params.require(:user).permit(:name, :profile_image,:introduction)

@@ -1,23 +1,23 @@
 <!--本の詳細ページ-->
 <div class="container px-5 px-sm-0">
   <div class="row">
- 
+
    <body>
-    <div class="col-md-3"> 
-     
+    <div class="col-md-3">
+
        <!--成功時・エラー時メッセージ-->
         <%= render 'books/message', book: @book %>
-       
+
        <!--ユーザーインフォ-->
-       <%= render 'books/info', user: @user %>
-       
+       <%= render 'books/info', user: @user, users: @users %>
+
        <!--New book-->
        <%= render 'books/new', book: @book_new %>
-   
+
     </div>
- 
- <div class="col-md-8 offset-md-1"> 
-  <!--Book detailの部分　ここから--> 
+
+ <div class="col-md-8 offset-md-1">
+  <!--Book detailの部分　ここから-->
  <h2>Book detail</h2>
    <table class="table">
    <thead></thead>
@@ -33,17 +33,17 @@
            <!--ユーザーページに飛ばす画像と名前のところ両方とも-->
            <p><%= link_to @user.name,user_path(@user.id) %></p>
           </th>
-           
+
           <!--本の詳細画面に飛ばす-->
           <th scope="col"><%= link_to @book.title,book_path(@book.id)%></th>
           <th scope="col"><%= @book.body %></th>
-        
+
           <% if @user.id == current_user.id %>
-          
+
           <th scope="col"><%= link_to "Edit",edit_book_path(@book.id), class:"btn btn-sm btn-success" %></th>
           <th scope="col"><%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn btn-sm btn-danger" %></th>
           <% end %>
-          
+
           <!--いいね機能-->
           <th>
            <!--今投稿されている本の中で現在のユーザーはいいねしていますか？-->
@@ -67,30 +67,30 @@
                <% end %>
              </p>
            <% end %>
-                  
+
           </th>
-          
+
           <th scope="col">コメント数：<%= @book.book_comments.count %></th>
-          
-           
+
+
         </tr>
     </tbody>
      <!--Book detailの部分　ここまで-->
-    
+
     <!--コメント欄、コメント入力欄ここから-->
     <%= render 'books/book_comment', book: @book, book_comment: @book_comment %>
  <!--コメント欄、コメント入力欄ここまで-->
-    
-   </table> 
 
- 
- 
- 
- 
+   </table>
+
+
+
+
+
  </div>
- 
+
  </body>
- 
+
  </div>
 </div>
 
