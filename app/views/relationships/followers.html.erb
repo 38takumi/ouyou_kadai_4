@@ -1,18 +1,21 @@
 <h2>Follower Users</h2>
   <% if @users.exists? %>
+  <table class="table">
     <thead>
       <tr>
+        <th>image</th>
         <th>name</th>
-        <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
+          <th scope="col"><%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg", size: "40x40" %></th>
           <td><%= user.name %></td>
           <td>フォロー数: <%= user.followings.count %></td>
           <td>フォロワー数: <%= user.followers.count %></td>
+          <td><%= link_to "Show",user_path(user.id) %></td>
         </tr>
       <% end %>
     </tbody>
