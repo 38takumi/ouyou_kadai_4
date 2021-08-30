@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :correct_user,only: [:edit,:update]
 
   def index
-    @users = User.all 
+    @users = User.all
     @user = current_user
     # follow,follower数用　いらないかも
     # @users_relationships = @user.followings
@@ -59,8 +59,6 @@ class UsersController < ApplicationController
   #   flash[:notice] = "Book was successfully destroyed."
   #   redirect_to users_path
   # end
-
-
 
 
   def correct_user
