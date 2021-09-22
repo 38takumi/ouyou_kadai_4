@@ -10,13 +10,13 @@ class BooksController < ApplicationController
   end
 
   def show
-     @book = Book.find(params[:id])
-     # @bookのユーザー
-     @user = @book.user
-     # follow,follower数用　いらないかも
+    @book = Book.find(params[:id])
+    # @bookのユーザー
+    @user = @book.user
+    # follow,follower数用　いらないかも
     # @users = User.find(params[:id])
-     @book_new = Book.new
-     @book_comment = BookComment.new
+    @book_new = Book.new
+    @book_comment = BookComment.new
   end
 
   # def new
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
   end
 
   def edit
-     @book = Book.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def update
@@ -63,12 +63,12 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-   def correct_book
-        @book = Book.find(params[:id])
+  def correct_book
+      @book = Book.find(params[:id])
     unless @book.user.id == current_user.id
       redirect_to books_path
     end
-   end
+  end
 
 
   private
@@ -76,7 +76,7 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 
-   def book_comments_params
+  def book_comments_params
     params.require(:book_comments).permit(:user_comment)
-   end
+  end
 end

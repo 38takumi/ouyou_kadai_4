@@ -20,13 +20,12 @@ class RelationshipsController < ApplicationController
     @users = user.followings
   end
 
-  #・フォロワー一覧を表示する時 
+  #・フォロワー一覧を表示する時
   def followers
     user = User.find(params[:user_id])
     # user = User.find(relationship_params)
     @users = user.followers
   end
-
 
 
   # private

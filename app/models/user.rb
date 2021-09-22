@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
 
-
   #followingについて
   # 【class_name: "Relationship"】は省略可能
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -19,7 +18,6 @@ class User < ApplicationRecord
    # 被フォロー関係を通じて参照→followed_idをフォローしている人
   has_many :followers, through: :reverse_of_relationships, source: :follower
   #followerについてここまで
-
 
 
 def follow(user_id)
@@ -43,6 +41,4 @@ end
 
   #プロフィール画像用
   attachment :profile_image
-
-
 end

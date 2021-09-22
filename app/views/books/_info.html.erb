@@ -13,13 +13,9 @@
        <th>Introduction</th>
        <th><%= user.introduction %></th>
      </tr>
-
  <!--ユーザーインフォを入れる　ここまで-->
 
-
-<!-- _user_infoに書く
-User infoのところのfollowsとfollowersのところの
-数字がリンクになっていてそこからページ遷移する -->
+     <!-- followsとfollowers -->
      <tr>
       <th>
         follows   <%= link_to user_followings_path(user.id) do %>
@@ -35,17 +31,15 @@ User infoのところのfollowsとfollowersのところの
       </th>
      </tr>
 
-
     </tbody>
    </table>
 
 <!-- フォローボタン -->
-<!--ボタンはブートストラップからフォローはミドリ、フォローを外すは水色、pathのカッコの後ろにclass = "ボタン"-->
 <!--ユーザーが現在ユーザーなら表示させない-->
 <% if user != current_user %>
   <% if current_user.following?(user) %>
     <%= link_to user_relationships_path(user.id), method: :delete do %>
-        <button type="button" class="btn btn-success mb-4">フォローを外す</button>
+      <button type="button" class="btn btn-success mb-4">フォローを外す</button>
     <% end %>
   <% else %>
     <%#= link_to "フォローする", user_relationships_path(user.id), method: :post %>
@@ -55,14 +49,11 @@ User infoのところのfollowsとfollowersのところの
   <% end %>
 <% end %>
 
-
-
  <!--編集用ボタン-->
 <div class="row">
   <%# if user.id == current_user.id %>
   <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fas fa-user-cog"></i>
   <%# end %>
-
   <% end %>
 </div>
