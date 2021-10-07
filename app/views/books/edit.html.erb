@@ -7,12 +7,11 @@
 <%= form_with model: @book, url: book_path, local: true do |f| %>
 <p>
  <div>Title</div>
-
-  <%= f.text_field :title, class:"mb-1" %>
+ <%= f.text_field :title, class:"mb-1" %>
 </p>
 <p>
  <div>Body</div>
-  <%= f.text_field :body, class:"mb-1" %>
+ <%= f.text_field :body, class:"mb-1" %>
 </p>
 <div class="actions">
  <!--<input type="submit" name="commit" value="Update Book" data-disable-with="Update Book">-->

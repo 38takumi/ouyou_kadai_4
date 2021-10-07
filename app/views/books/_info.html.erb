@@ -1,7 +1,7 @@
 <!--ユーザーインフォを入れる　ここから-->
 <p>
   <h2>User info</h2>
-    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
+  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
 </p>
 <table class="table">
   <tbody>
@@ -30,7 +30,6 @@
       <% end %>
     </th>
    </tr>
-
   </tbody>
  </table>
 
@@ -44,7 +43,7 @@
   <% else %>
     <%#= link_to "フォローする", user_relationships_path(user.id), method: :post %>
     <%= link_to user_relationships_path(user.id), method: :post do %>
-        <button type="button" class="btn btn-info mb-4">フォローする</button>
+      <button type="button" class="btn btn-info mb-4">フォローする</button>
     <% end %>
   <% end %>
 <% end %>

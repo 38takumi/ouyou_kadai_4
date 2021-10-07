@@ -1,5 +1,4 @@
   <!DOCTYPE html>
-  
 <html>
   <head>
     <title>Bookers2</title>
@@ -13,7 +12,7 @@
   </head>
   <body>
     <% if user_signed_in? %>
-      <!--headerここから-->
+     <!--headerここから-->
      <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -34,12 +33,11 @@
               <li><%= link_to " logout", "/users/sign_out", class: "fas fa-sign-out-alt nav-link text-light", method: :delete %></li>
             </ul>
           </div>
-        <!--</div>    -->
+        <!--</div>-->
        </div>
       </nav>
     </header>
     <!--headerここまで-->
-
 
     <% else %>
       <header>
@@ -65,21 +63,19 @@
           </div>
         </nav>
       </header>
-      
-    <% end %> 
-    
+
+    <% end %>
+
     <div class="container-fluid ">
     <div class="row">
-    <div class="col-sm-12 col-md-8 px-5 px-sm-0 mx-auto">  
-      <main> 
-          
-          <%= yield %>
-          
+    <div class="col-sm-12 col-md-8 px-5 px-sm-0 mx-auto">
+      <main>
+        <%= yield %>
       </main>
     </div>
     </div>
     </div>
-    
+
     <!--footerここから-->
     <footer>
       <div class="container mt-5">
@@ -90,7 +86,6 @@
         </div>
       </div>
     </footer>
-
-<!--footerここまで-->
+    <!--footerここまで-->
   </body>
 </html>
